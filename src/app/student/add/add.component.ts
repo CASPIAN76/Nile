@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormControl, FormBuilder}  from '@angular/forms' 
+import {FormGroup, FormControl, FormBuilder, Validators}  from '@angular/forms' 
 import { StuService } from '../stu.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { JsonPipe } from '@angular/common';
@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./add.component.scss']
 })
 export class AddComponent implements OnInit {
+  submited:boolean=false
 URL:any="";
 studentArray:any=[]
  defaultImga="../../../assets/student-logo-vector.jpg"
@@ -45,12 +46,12 @@ if(event.target.files && event.target.files[0]){
   ngOnInit(): void {
     this.student = this._fb.group({
       id:new FormControl(1,),
-      image: new FormControl("", []),
-      firstName: new FormControl('', []),
-      lastName: new FormControl("", []),
-      email: new FormControl("", []),
-      branchName: new FormControl("", []),
-      year: new FormControl("", [])
+      image: new FormControl("", [ Validators.required]),
+      firstName: new FormControl('', [ Validators.required]),
+      lastName: new FormControl("", [Validators.required]),
+      email: new FormControl("", [Validators.required,Validators.email]),
+      branchName: new FormControl("", [Validators.required]),
+      year: new FormControl("", [Validators.required])
 
 
     })
@@ -68,8 +69,16 @@ this.URL=data.image
   }
 
 
+  get alert(){
+    return this.student.controls
+  }
+
   add(){
   
+    if(this.student.invalid){
+      this.submited=true
+      return 
+    }
     const local  = localStorage.getItem("studentList")
     if(local  == null){
       this.studentArray.push(this.student.value)
@@ -93,6 +102,10 @@ this.URL=data.image
 
 
       onUpdate(){
+        if(this.student.invalid){
+          this.submited=true
+          return 
+        }
 
         Swal.fire({
           title: 'Do you want to save the changes?',
