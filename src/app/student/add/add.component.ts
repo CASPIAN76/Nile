@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class AddComponent implements OnInit {
   submited:boolean=false
+  path=true
 URL:any="";
 studentArray:any=[]
  defaultImga="../../../assets/student-logo-vector.jpg"
@@ -23,7 +24,12 @@ studentArray:any=[]
  constructor(private _fb:FormBuilder, private ser:StuService, private router:Router, private activatedRouter:ActivatedRoute){
  
   this.id= this.activatedRouter.snapshot.paramMap.get("id")
- 
+  
+  console.log(this.path)
+  if(this.router.url.includes('view')){
+ this.path=false
+  }
+
  }
 
   selectProfile( event:any){

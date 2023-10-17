@@ -64,7 +64,7 @@
         </div>
         <div  class="saveLL">
             
-                    <button  type="submit"  class="btn btn-primary SSDDSFD" (click)=" id == null ? add()  :onUpdate()" > {{id ==null ? 'SAVE' :"Update" }}</button>
+                    <button  type="submit" *ngIf="path" class="btn btn-primary SSDDSFD" (click)=" id == null ? add()  :onUpdate()" > {{id ==null ? 'SAVE' :"Update" }}</button>
 
         </div>
 

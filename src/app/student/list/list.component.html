@@ -54,7 +54,7 @@
                   <td  scope="row">{{item.branchName}}</td>
                   <td  scope="row">{{item.year}}</td>
                   <td>
-                    <button class="btn btn-secondary"><i class="fas fa-eye"></i></button>&nbsp;
+                    <button class="btn btn-secondary" [routerLink]="['/student/view/',item.id]" ><i class="fas fa-eye"></i></button>&nbsp;
                     <button class="btn btn-primary" [routerLink]="['/student/edit/', item.id]"><i class="fas fa-edit"></i></button> &nbsp;
                     <button  class="btn btn-danger" (click)="delete(item.id)" ><i class="fas fa-trash"></i></button> </td>
               </tr>
