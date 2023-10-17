@@ -1,0 +1,59 @@
+<div class="container-fluid">
+
+    <h4  style="text-align: center;margin-top: 3%;">Add student</h4>
+
+    <form [formGroup]="student">
+
+
+        <div class="row">
+            <div class="col-md-4 image-container"> 
+                <label class="hoverable" for="filess">
+                    <img [src]="URL ? URL : defaultImga " alt="">
+             
+                </label>
+                <br>
+                <input type="file"  id="filess" accept=".png, .jpg, .jpeg"      class="select-profile-picture" (change)="selectProfile($event)"  >
+            </div>
+            <div class="col-md-4">
+                <label  for="name"  class="form-label"> First Name</label>
+        
+                <input type="text"  placeholder="First Name"   formControlName="firstName"   class=" form-control" id="name">
+            </div>
+            <div class="col-md-4">
+                <label  for="last" class="form-label">Last Name</label>
+                <input type="text" class="form-control"   formControlName="lastName"   placeholder="Last Name" id="last">
+            </div>
+            <div class="col-md-4">
+                <label for="email" class="form-label">Email</label>
+                <input type="email"  placeholder="Email"  formControlName="email"   class="form-control" id="email">
+            </div>
+            <div class="col-md-4">
+                <label for="branchName"  class="form-label">Branch Name</label>
+                <select class="form-select"   formControlName="branchName"   >
+                    <option  value=""> Select Branch Name</option>
+                    
+                    <option  *ngFor="let item of branch"  [value]="item">{{item}}</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label  class="form-label">Year</label>
+                <select class="form-select"  formControlName="year"  >
+                    <option  value=""> Select year</option>
+                    <option  *ngFor="let item of year"  [value]="item">{{item}}</option>
+                 
+                </select>
+            </div>
+           
+        </div>
+        <div  class="saveLL">
+            
+                    <button  type="submit"  class="btn btn-primary SSDDSFD" (click)=" id == null ? add()  :onUpdate()" > {{id ==null ? 'SAVE' :"Update" }}</button>
+
+        </div>
+
+    </form>        
+
+
+</div>
+
+

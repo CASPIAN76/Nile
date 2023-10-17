@@ -1,0 +1,36 @@
+.image-container{
+    position: relative;
+    display: inline-block;
+    text-align: center;
+}
+
+img{
+    width: 100px;
+    border-radius: 50%;
+    height: 100px;
+}
+
+.select-profile-picture{
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    opacity: 0;
+    width: 45%;
+    left: 25%;
+    height: 100%;
+    cursor: pointer;
+}
+
+form {
+    background: lavender;
+    padding: 10px;
+  
+}
+
+
+.saveLL {
+    text-align: center;
+    margin: 3%;
+}
